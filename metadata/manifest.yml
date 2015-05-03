@@ -1,0 +1,36 @@
+---
+Name: hello
+Cartridge-Short-Name: HELLO
+Display-Name: Hello Cartridge 0.1
+Description: A hello cartridge for development use only.
+Version: '0.1'
+License: "None"
+Vendor: ysag
+Cartridge-Version: 0.0.1
+Cartridge-Vendor: ysag
+Categories:
+- service
+- web_framework
+Provides:
+- hello
+Cart-Data:
+- Key: OPENSHIFT_HELLO_EXAMPLE
+  Type: environment
+  Description: An example environment variable using ERB processing
+Publishes:
+Subscribes:
+  set-env:
+    Type: ENV:*
+    Required: false
+Endpoints:
+- Private-IP-Name: IP
+  Private-Port-Name: PORT
+  Private-Port: 8080
+  Public-Port-Name: PROXY_PORT
+  Protocols: [http, ws]
+  Mappings:
+  - Frontend: ''
+    Backend: ''
+    Options:
+      websocket: true
+

@@ -1,0 +1,41 @@
+#!/bin/bash -eu
+
+source $OPENSHIFT_CARTRIDGE_SDK_BASH
+
+function start {
+  echo "hello started" >>$OPENSHIFT_HELLO_DIR/bam.txt
+}
+
+function stop {
+  echo "hello stopped" >>$OPENSHIFT_HELLO_DIR/bam.txt
+}
+
+function restart {
+  echo "hello restarted" >>$OPENSHIFT_HELLO_DIR/bam.txt 
+}
+
+function catchall {
+  echo "Not yet implemented"
+}
+
+case "$1" in
+  start)                start ;;
+  stop)                 stop ;;
+  restart)              restart ;;
+  status)               catchall ;;
+  reload)               catchall ;;
+  tidy)                 catchall ;;
+  pre-build)            catchall ;;
+  build)                catchall ;; 
+  deploy)               catchall ;;
+  post-deploy)          catchall ;;
+  pre-snapshot)         catchall ;;
+  post-snapshot)        catchall ;;
+  pre-restore)          catchall ;;
+  post-restore)         catchall ;;
+  pre-repo-archive)     catchall ;;
+  update-configuration) catchall ;;
+  *)           exit 0
+esac
+
+exit 0
